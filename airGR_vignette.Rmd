@@ -22,8 +22,6 @@ output:
 
 ```{r knitr_init, echo=FALSE, cache=TRUE}
 #<img src='logo/logo_airGR.svg' style='width:90px;height:90px;'>&emsp; 
-library(knitr, quietly = TRUE, verbose = FALSE)
-library(rmdformats, quietly = TRUE, verbose = FALSE)
 
 ## Global options
 print_width <- 110
@@ -38,6 +36,10 @@ opts_chunk$set(echo    = TRUE,
                warning = FALSE,
                out.width = 810)
 opts_knit$set(width = print_width)
+
+#! packages
+library(knitr, quietly = TRUE, verbose = FALSE)
+library(rmdformats, quietly = TRUE, verbose = FALSE)
 ```
 
 
