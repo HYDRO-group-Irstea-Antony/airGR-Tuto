@@ -20,6 +20,7 @@ output:
 
 
 
+
 ```{r knitr_init, echo=FALSE, cache=TRUE}
 #<img src='logo/logo_airGR.svg' style='width:90px;height:90px;'>&emsp; 
 
@@ -43,66 +44,69 @@ library(rmdformats, quietly = TRUE, verbose = FALSE)
 ```
 
 
+
+
 # Presentation
 
-airGR is a package which brings into the [R software](https://cran.r-project.org/) the hydrological modelling tools used at the [Catchment Hydrology Team](http://webgr.irstea.fr/?lang=en) at [IRSTEA (France)](http://www.irstea.fr/en/), including the [GR model suite](http://webgr.irstea.fr/modeles/?lang=en) and CemaNeige. Each model core is coded in FORTRAN to ensure low computational time. The other package functions (i.e. mainly the calibration algorithm and the efficiency criteria) are coded in R. 
+**airGR** is a package which brings into the [**R software**](https://cran.r-project.org/) the hydrological modelling tools used at the [Catchment Hydrology Team](http://webgr.irstea.fr/?lang=en) at [IRSTEA (France)](http://www.irstea.fr/en/), including the [**GR models suite**](http://webgr.irstea.fr/modeles/?lang=en) and **CemaNeige**. Each model core is coded in **Fortran** to ensure low computational time. The other package functions (i.e. mainly the calibration algorithm and the efficiency criteria) are coded in **R**. 
 
 
-The airGR package has been designed to fulfil two major requirements: facilitate the use by non-expert users and allow flexibility regarding the addition of external criteria, models or calibration algorithms. The names of the functions and their arguments were chosen to this end.
+The **airGR** package has been designed to fulfil two major requirements: facilitate the use by non-expert users and allow flexibility regarding the addition of external criteria, models or calibration algorithms. The names of the functions and their arguments were chosen to this end.
+
 
 
 
 ## General
 
 
-Six hydrological models and one snow melt and accumulation module are implemented in airGR. The snow module can also be used alone or with the daily hydrological models, and each hydrological model can either be used alone or together with the snow module. 
+Six hydrological models and one snow melt and accumulation module are implemented in **airGR**. The snow module can also be used alone or with the daily hydrological models, and each hydrological model can either be used alone or together with the snow module. 
 
-These models can be called within airGR using the following functions: 
+These models can be called within **airGR** using the following functions: 
 
-  * `RunModel_GR4H`: four-parameter hourly lumped hydrological model (Mathevet, 2005) 
-  * `RunModel_GR4J`: four-parameter daily lumped hydrological model (Perrin et al., 2003) 
-  * `RunModel_GR5J`: five-parameter daily lumped hydrological model (Le Moine, 2008) 
-  * `RunModel_GR6J`: six-parameter daily lumped hydrological model (Pushpalatha et al., 2011) 
-  * `RunModel_GR2M`: two-parameter monthly lumped hydrological model (Mouelhi, 2003 ; Mouelhi et al., 2006a) 
-  * `RunModel_GR1A`: one-parameter yearly lumped hydrological model (Mouelhi, 2003 ; Mouelhi et al., 2006b) 
-  * `RunModel_CemaNeige`: two-parameter degree-day snow melt and accumulation daily module (Valéry et al., 2014) 
-  * `RunModel_CemaNeigeGR4J`: combined use of GR4J and CemaNeige 
-  * `RunModel_CemaNeigeGR5J`: combined use of GR5J and CemaNeige 
-  * `RunModel_CemaNeigeGR6J`: combined use of GR6J and CemaNeige 
+  * `RunModel_GR4H()`: four-parameter hourly lumped hydrological model (Mathevet, 2005) 
+  * `RunModel_GR4J()`: four-parameter daily lumped hydrological model (Perrin et al., 2003) 
+  * `RunModel_GR5J()`: five-parameter daily lumped hydrological model (Le Moine, 2008) 
+  * `RunModel_GR6J()`: six-parameter daily lumped hydrological model (Pushpalatha et al., 2011) 
+  * `RunModel_GR2M()`: two-parameter monthly lumped hydrological model (Mouelhi, 2003 ; Mouelhi et al., 2006a) 
+  * `RunModel_GR1A()`: one-parameter yearly lumped hydrological model (Mouelhi, 2003 ; Mouelhi et al., 2006b) 
+  * `RunModel_CemaNeige()`: two-parameter degree-day snow melt and accumulation daily module (Valéry et al., 2014) 
+  * `RunModel_CemaNeigeGR4J()`: combined use of **GR4J** and **CemaNeige** 
+  * `RunModel_CemaNeigeGR5J()`: combined use of **GR5J** and **CemaNeige** 
+  * `RunModel_CemaNeigeGR6J()`: combined use of **GR6J** and **CemaNeige** 
 
 ## Installation
 
-[Download the airGR install zip file](http://webgr.irstea.fr/activites/airgr/?lang=en)
+Download the **airGR** install zip file on [**webGR**](http://webgr.irstea.fr/activites/airgr/download-airgr-sources/?lang=en). Unzip the file before installing the package in **R**.
 
 
-Windows 32 or 64-bit binaries version (zip file) (if there is a warning relative to the version of R, it is not a problem for the using of the package)
+**Windows 32 or 64-bit binaries versions** (zip file) (if there is a warning relative to the version of **R**, it is not a problem for the using of the package).
 
 ```{r, eval=FALSE}
 install.packages("myDirectory/airGR_x.x.x.zip", repos = NULL, type = "win.binary")
 ```
 
-Sources version (Windows / Linux / Mac): the tar.gz file that is necessary for installation of the package (the tar.gz file is in the zip file)
+**Sources version** (Windows / Linux / Mac): the tar.gz file that is necessary for installation of the package (the tar.gz file is in the zip file).
 
 ```{r, eval=FALSE}
 install.packages("myDirectory/airGR_x.x.x.tar.gz", repos = NULL, type = "source")
 ```
 
-To install the airGR package from the sources, because of the presence of FORTRAN code, you have to previously install the gfortran compiler on your computer
+To install the **airGR** package from the sources, because of the presence of **Fortran** code, you have to previously install the **gfortran** compiler on your computer.
     
-  * Linux :
+  * Linux:
 
     + It depends of the Linux distribution you use (often already install)
     
-  * MAC OS X :
+  * MAC OS X:
 
     + gfortran-4.2.3.pkg (OS X 10.5+, signed, 64-bit driver)
 		+ gfortran-4.2.3.dmg (OS X 10.4, 32-bit driver)
 		+ https://cran.r-project.org/bin/macosx/tools/
-		+ Note: more recent Fortran binaries for Xcode are available from : http://r.research.att.com/tools/
+		+ Note: more recent Fortran binaries for Xcode are available from: http://r.research.att.com/tools/
 
-  * Windows :
+  * Windows:
   
-    + Rtools Downloads (you have to add Rtools in the PATH of your computer)
+    + Rtools downloads (you have to add Rtools in the PATH of your computer)
     + https://cran.r-project.org/bin/windows/Rtools/
 
 					
@@ -113,7 +117,7 @@ To install the airGR package from the sources, because of the presence of FORTRA
 
 ## Loading data
 
-Here we use a data sample contained in the package, but the user have to import himself his data into R.
+Here we use a data sample contained in the package, but the user have to import himself his data into **R**.
 
 
 Loading package
@@ -122,43 +126,43 @@ Loading package
 library(airGR)
 ```
 
-This is an example of a `data.frame` of time series of observations of a fictional catchment which contains :
+This is an example of a `data.frame` of time series of observations of a fictional catchment which contains:
 
-  * average precipitation [mm/day]
-  * catchment average air temperature [°C]
-  * catchment average potential evapotranspiration [mm/day]
-  * outlet discharge [l/s]
-  * outlet discharge [mm/day]
+  * *DatesR*: time series dates in the POSIXt format 
+  * *P*: average precipitation [mm/day]
+  * *T*: catchment average air temperature [°C]
+  * *E*: catchment average potential evapotranspiration [mm/day]
+  * *Qls*: outlet discharge [l/s]
+  * *Qmm*: outlet discharge [mm/day]
   
 ```{r}
 data(L0123001)
 summary(BasinObs)
 ```
+Of course you can load your own data with the usual functions (e.g. `read.table()`).
+
 
 
 ## Preparation of inputs
 
+To run a model, the package requires data and options with specific formats.
+
+To facilitate the use of the package, there are several functions which allow to create these objects from simple data:
+
+  * `CreateInputsModel()`: to prepare the inputs for the different hydrological models (times series of dates, rainfall, flow, etc.)
+  * `CreateCalibOptions()`: to prepare the options for the hydrological model calibration (choice of parameters to optimize, values of the fixed parameters, etc.)
+  * `CreateRunOptions()`: to prepare the options for the hydrological model run (warm-up period, calibration period, etc.)
+  * `CreateInputsCrit()`: to prepare the options in order to compute efficiency criterions (to choose the criterion, to choose the transformation on flows: "log", "root", etc.)
+
 
 ### InputsModel object
 
-
-To run a model, the package requires data and options with specific formats.
-
-To facilitate the use, there are functions which allow to create these objects from simple data:
-
-  * `CreateInputsModel()` : to prepare the inputs for the different hydrological models (times series of dates, rainfall, flow, etc.)
-  * `CreateCalibOptions()` : to prepare the options for the hydrological model calibration (choice of parameters to optimize, values of the fixed parameters, etc.)
-  * `CreateRunOptions()` :to prepare the options for the hydrological model run (warm-up period, calibration period, etc.)
-  * `CreateInputsCrit()` : to prepare the options in order to compute efficiency criterions (to choose the criterion, the flow transformation sur les débits : "log", "root", etc.)
-
-
 To run a GR hydrologic model, the user have to prepare the input data with the `CeateInputsModel()` function.
-Thi function needs the function which corresponds to the model the user want to run, a vector with dates and a vector with precipitations. In the example we already have the potential evapotranspiration. If the user don't have it, it is possible to compute the  potential evapotranspiration with Oudin's formaul with the `PEdaily_Oudin()` function (needs julian days, daily mean air temperature and latitude).
+This function needs the name function relative to the model the user want to run, a vector of dates and a of precipitation.
 
-Missing values (`NA`) of precipiations (or potential evapotranspiration) are *not allowed*.
+In the example we already have the potential evapotranspiration. If the user don't have it, it is possible to compute the  potential evapotranspiration with Oudin's formaul with the `PEdaily_Oudin()` function (needs julian days, daily mean air temperature and latitude).
 
-
-The `CeateInputsModel()` function return a list.
+Missing values (`NA`) of precipiation (or potential evapotranspiration) are **not allowed**.
 
 
 ```{r}
@@ -168,9 +172,18 @@ str(InputsModel)
 ```
 
 
-### Run period selection
 
-To select a period for which we want to run the model, select the corresponding indices for different time period.
+### RunOptions object
+
+The `CreateRunOptions()` function allows to prepare the options required to the `RunModel*()` functions.
+
+The user must at least define:
+
+  * `FUN_MOD`: the name of the model function to run
+  * `InputsModel`: the associated inputs data
+  * `IndPeriod_Run`: the run period of the model
+  
+To select a period for which the user want to run the model, select the corresponding indices for different time period but not directly the POSIXt dates.
 
 ```{r}
 Ind_Run <- seq(which(format(BasinObs$DatesR, format = "%d/%m/%Y %H:%M")=="01/01/1990 00:00"), 
@@ -178,70 +191,141 @@ Ind_Run <- seq(which(format(BasinObs$DatesR, format = "%d/%m/%Y %H:%M")=="01/01/
 str(Ind_Run)
 ```
 
+The models simulate the calculated flow rates if the initial state is known at the beginning of the simulation period. Given the arbitrary nature of initialization, the first values of simulated discharges will not be reliable and should not be taken into account for the calculation of the criterion function. This period must be long enough (at least one year: winter + summer)  
 
-### RunOptions object
+So, it is also possible to defin other arguments like:
+
+  * `IniStates`: the states of the 2 unit hydrographs (20 + 40 = 60 units)
+  * `IniResLevels`: the levels of the production and routing stores
+  * `IndPeriod_WarmUp`: the warm-up period to adjust `IniStates` and `IniResLevels`
+
 
 ```{r}
 RunOptions <- CreateRunOptions(FUN_MOD = RunModel_GR4J,
-                               InputsModel = InputsModel, IndPeriod_Run = Ind_Run)
+                               InputsModel = InputsModel, IndPeriod_Run = Ind_Run,
+                               IniStates = NULL, IniResLevels = NULL, IndPeriod_WarmUp = NULL)
 str(RunOptions)
 ```
+The `CreateRunOptions()` function returns warnings if the default initialisation options are used:
+
+  * `IniStates` and `IniResLevels` are automatically set to initialise all the model states at 0, except for the production and routing stores which are initialised at 50 % of their capacity
+  * `IndPeriod_WarmUp` default setting ensures a one-year warm-up using the time steps preceding the `IndPeriod_Run`  
 
 
+
+## Criterion
+
+The evaluation of the quality of a simulation criteria can be used both as objective function during the calibration of the model, or as a measure for evaluating its control performance.
+
+
+The package offers the possibility to use different criterions:
+
+  * `ErrorCrit_RMSE()`: Root-mean-square error (RMSE)
+  * `ErrorCrit_NSE()`: Nash–Sutcliffe model efficiency coefficient (NSE)
+  * `ErrorCrit_KGE()`: Kling-Gupta efficiency criterion (KGE)
+  * `ErrorCrit_KGE2()`: Kling-Gupta efficiency criterion (KGE')
+  
+It is also possible to create your own criterion. For that, you just have to define your own function in **R**.
+  
+  
 ## Calibration
+
+
+The objective of the calibration step is learning model to identify and recognize the hydrology of the watershed: by comparing the model with input and output observed series, one can find the combination of parameters for representing the better behavior of the watershed.
 
 
 ### Calibration criterion: preparation of the InputsCrit object
 
 
-The package offers the possibility to use different criterions:
+The `CreateInputsCrit()` allows to prepare the input in order to calibrate the model. The user have to define at least:
 
-  * Nash-Sutcliffe: `ErrorCrit_NSE()`
-  * KGE: `ErrorCrit_KGE()`
-  * KGE2: `ErrorCrit_KGE2()`
-  * RMSE: `ErrorCrit_RMSE()`
+  * `FUN_CRIT`: the error criterion function
+  * `InputsModel`: the inputs of hydrological model previously prepare by the `CeateInputsModel()` function
+  * `RunOptions`: the options for the hydrological model previously prepare by the `CreateRunOptions()` function 
+  * `Qobs`: the observed discharges serie expressed in *mm/time step*
 
+Missing values (`NA`) of observed discharges are **allowed**.
 
-The first step is to prepare the input.
 ```{r}
 InputsCrit <- CreateInputsCrit(FUN_CRIT = ErrorCrit_NSE, InputsModel = InputsModel, 
                                RunOptions = RunOptions, Qobs = BasinObs$Qmm[Ind_Run])
 str(InputsCrit)
 ```
 
+
 ### Preparation of CalibOptions object
+
+The user also need to prepar the calibration option with the `CreateCalibOptions()`function. For that he had to define:
+
+  * `FUN_MOD`: the name of the model function to run
+  * `FUN_CALIB`: the name of the calibration algorithm
 
 ```{r}
 CalibOptions <- CreateCalibOptions(FUN_MOD = RunModel_GR4J, FUN_CALIB = Calibration_Michel)
 str(CalibOptions)
 ```
 
+
 ### Calibration run
 
+In the **airGR** package, function `Calibration_Michel()` allows to run the calibration step.
+The calibration algorithm optimises the error criterion selected as objective function. This algorithm works in two steps:
+
+  1. a screening is performed using either a rough predefined grid or a list of parameter sets
+  2. a simple steepest descent local search algorithm is performed from the best set of parameters found at the firts step
+
 ```{r}
-OutputsCalib <- Calibration_Michel(InputsModel = InputsModel, RunOptions = RunOptions, 
-                                 InputsCrit = InputsCrit, CalibOptions = CalibOptions, 
-                                 FUN_MOD = RunModel_GR4J, FUN_CRIT = ErrorCrit_NSE)
+OutputsCalib <- Calibration_Michel(InputsModel = InputsModel, RunOptions = RunOptions,
+                                   InputsCrit = InputsCrit, CalibOptions = CalibOptions,
+                                   FUN_MOD = RunModel_GR4J, FUN_CRIT = ErrorCrit_NSE)
 Param <- OutputsCalib$ParamFinalR
 Param
 ```
 
+Only one function `Calibration_Michel()` is implemented to calibrate the model, but the user can define is own calibration function.
+
+This function returns the parameters of the choosen model. So the number of parameters is not always the same.
+
+
+
+## Validation
+
+This step ensures the predictive power of the model. This is to measure the accuracy of the model on samples of data that were not used in its construction, and in particular its timing.
+The use is to keep data from a period separated from the calibration period. As possible, this control period should correspond to different climatic situations rather than those of the calibration period in order to better point out the qualities and weakness of the model. This exercise is very useful for assessing the robustness of the model, that is to say its ability to keep stable performance outside the stall conditions.
+
+With **airGR** the validation steps are the same as the simulation steps.
+
+
 
 ## Simulation
 
+
 ### Simulation run
+
+To run a model the user have to use the `RunModel*()` functions.
+All the data needed have already been prepared.
 
 ```{r}
 OutputsModel <- RunModel_GR4J(InputsModel = InputsModel, RunOptions = RunOptions, Param = Param)
 str(OutputsModel)
 ```
 
+Obviously the user can make his own graphics from the outputs of the `RunModel*()` functions.
+
 
 ### Results preview
 
+Thje **airGR** package offers a `plot_OutputsModel()` function which return a dashboard of results including various graphs (depending on the model): 
+
+  * time series of total precipitation and simulated flows (and observed flows if provided)
+  * interannual median monthly simulated flow (and observed flows if provided)
+  * correlation plot between simulated and observed flows (if observed flows provided)
+  * cumulative frequency plot for simulated flows (and observed flows if provided)
+  
 ```{r}
 plot_OutputsModel(OutputsModel = OutputsModel, Qobs = BasinObs$Qmm[Ind_Run])
 ```
+
 
 ### Efficiency criterion
 
@@ -249,8 +333,10 @@ To evaluate the efficiency of the model, it is possible to use the same criterio
 
 ```{r}
 OutputsCrit <- ErrorCrit_NSE(InputsCrit = InputsCrit, OutputsModel = OutputsModel)
-cat(paste("  Crit  ", OutputsCrit$CritName, "  ", round(OutputsCrit$CritValue, 4), "\n", sep = ""))
+str(OutputsCrit)
 ```
+
+
 
 
 # Add a new model
@@ -260,12 +346,14 @@ It is possible to complement the package with a new model
 The main steps required to add a moedl are:
 
   1. Write a model or restart from a Fortran code used in the package and change it
-  2. Create specific R functions to the model (`RunModel_MyModel()`, `TransfParam_MyModel()`)
+  2. Create specific **R** functions to the model (`RunModel_MyModel()`, `TransfParam_MyModel()`)
   3. 
-    a. Create a DLL ensuring compatibility with R and lodad it with the `dyn.load()` function
-    b. Create a new package dependent on airGR which contains only your R model and functions of step 2
-  4. If the new model requires different input models already in airGR, create new versions of `CreateInputsModel()` and `CreateRunOptions()` functions
+    a. Create a dynamically loadable librarie (DLL; also known as shared objects) ensuring compatibility with **R** and lodad it with the `dyn.load()` function
+    b. Create a new package dependent on **airGR** which contains only your **R** model and functions of step 2
+  4. If the new model requires different input models already in **airGR**, create new versions of `CreateInputsModel()` and `CreateRunOptions()` functions
 
+  
+  
   
 # Misc
 
@@ -273,31 +361,31 @@ The main steps required to add a moedl are:
 
 ## How to cite airGR
 
-To cite the airGR package in your scientific document. Please use the refenreces retrurn by the `citation()` function.
+To cite the **airGR** package in your scientific document. Please use the refenreces retrurn by the `citation()` function.
 
 ```{r}
 citation("airGR")
 ```
 
 
-To retrive a ".bib" format for Latex documents, you can use the following command:
+To retrive a ".bib" format for **Latex** documents, you can use the following command:
 ```{r}
 toBibtex(citation("airGR"))
 ```
 
 
-## Users in the world
 
+## Users in the world
 
 
 ```{r, echo=FALSE}
 library(leaflet)
 #library(htmlwidgets)
 load("../data/airGR_users_map.RData")
-setView(airGR_map, lng = 50.0, lat = 20.0, zoom = 2)
+setView(airGR_map, lng = 46.0, lat = 20.0, zoom = 2)
 ```
 
-
+<!--
 # References
-
+-->
 
