@@ -94,20 +94,12 @@ install.packages("myDirectory/airGR_x.x.x.tar.gz", repos = NULL, type = "source"
 To install the **airGR** package from the sources, because of the presence of **Fortran** code, you have to previously install the **gfortran** compiler on your computer.
     
   * Linux:
-
-    + It depends of the Linux distribution you use (often already install)
-    
+    - It depends on the Linux distribution used (often already install)
   * MAC OS X:
-
-    + gfortran-4.2.3.pkg (OS X 10.5+, signed, 64-bit driver)
-		+ gfortran-4.2.3.dmg (OS X 10.4, 32-bit driver)
-		+ https://cran.r-project.org/bin/macosx/tools/
-		+ Note: more recent Fortran binaries for Xcode are available from: http://r.research.att.com/tools/
-
+    - [R for Mac OS X](https://cran.r-project.org/bin/macosx/tools/) (you have to add **gfortran** in the PATH of your computer)
+	- [More recent Fortran binaries for Xcode](http://r.research.att.com/tools/)
   * Windows:
-  
-    + Rtools downloads (you have to add Rtools in the PATH of your computer)
-    + https://cran.r-project.org/bin/windows/Rtools/
+    - [Rtools downloads](https://cran.r-project.org/bin/windows/Rtools/) (you have to add **Rtools** in the PATH of your computer)
 
 					
 
@@ -117,7 +109,7 @@ To install the **airGR** package from the sources, because of the presence of **
 
 ## Loading data
 
-Here we use a data sample contained in the package, but the user have to import himself his data into **R**.
+In the following example, we use a data sample contained in the package, but the user have to import himself his data into **R**.
 
 
 Loading package
@@ -315,7 +307,7 @@ Obviously the user can make his own graphics from the outputs of the `RunModel*(
 
 ### Results preview
 
-Thje **airGR** package offers a `plot_OutputsModel()` function which return a dashboard of results including various graphs (depending on the model): 
+The **airGR** package offers a `plot_OutputsModel()` function which returns a dashboard of results including various graphs (depending on the model used): 
 
   * time series of total precipitation and simulated flows (and observed flows if provided)
   * interannual median monthly simulated flow (and observed flows if provided)
@@ -341,13 +333,11 @@ str(OutputsCrit)
 
 # Add a new model
 
-It is possible to complement the package with a new model
-
-The main steps required to add a moedl are:
+It is possible to complement the package with a new model. For do that, the main steps required to use your own a model are:
 
   1. Write a model or restart from a Fortran code used in the package and change it
   2. Create specific **R** functions to the model (`RunModel_MyModel()`, `TransfParam_MyModel()`)
-  3. 
+  3. Two possibilities:
     a. Create a dynamically loadable librarie (DLL; also known as shared objects) ensuring compatibility with **R** and lodad it with the `dyn.load()` function
     b. Create a new package dependent on **airGR** which contains only your **R** model and functions of step 2
   4. If the new model requires different input models already in **airGR**, create new versions of `CreateInputsModel()` and `CreateRunOptions()` functions
