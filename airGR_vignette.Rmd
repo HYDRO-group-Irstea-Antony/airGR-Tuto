@@ -8,6 +8,7 @@ author: "IRSTEA - HBAN Research Unit
   <a href='http://webgr.irstea.fr/?lang=en'><img src='logo/logo_irstea_hydro_COUL_smooth.svg' style='width:50px;height:50px;'></a>
   <a href='http://webgr.irstea.fr/activites/airgr/?lang=en'><img src='logo/logo_airGR.svg' style='width:50px;height:50px;'></a>"
 date: "Update: `r Sys.Date()` <br>&emsp; &ensp; airGR `r packageVersion('airGR')`"
+bibliography: ref/airgr_web_ref.bib
 output:
   rmdformats::readthedown:
     self_contained: no
@@ -63,13 +64,13 @@ Six hydrological models and one snow melt and accumulation module are implemente
 
 These models can be called within **airGR** using the following functions: 
 
-  * `RunModel_GR4H()`: four-parameter hourly lumped hydrological model (Mathevet, 2005) 
-  * `RunModel_GR4J()`: four-parameter daily lumped hydrological model (Perrin et al., 2003) 
-  * `RunModel_GR5J()`: five-parameter daily lumped hydrological model (Le Moine, 2008) 
-  * `RunModel_GR6J()`: six-parameter daily lumped hydrological model (Pushpalatha et al., 2011) 
-  * `RunModel_GR2M()`: two-parameter monthly lumped hydrological model (Mouelhi, 2003 ; Mouelhi et al., 2006a) 
-  * `RunModel_GR1A()`: one-parameter yearly lumped hydrological model (Mouelhi, 2003 ; Mouelhi et al., 2006b) 
-  * `RunModel_CemaNeige()`: two-parameter degree-day snow melt and accumulation daily module (Valéry et al., 2014) 
+  * `RunModel_GR4H()`: four-parameter hourly lumped hydrological model [@mathevet_quels_2005] 
+  * `RunModel_GR4J()`: four-parameter daily lumped hydrological model [@perrin_improvement_2003] 
+  * `RunModel_GR5J()`: five-parameter daily lumped hydrological model [@le_moine_bassin_2008] 
+  * `RunModel_GR6J()`: six-parameter daily lumped hydrological model @pushpalatha_downward_2011] 
+  * `RunModel_GR2M()`: two-parameter monthly lumped hydrological model [@mouelhi_vers_2003; @mouelhi_stepwise_2006] 
+  * `RunModel_GR1A()`: one-parameter yearly lumped hydrological model [@mouelhi_vers_2003; @mouelhi_linking_2006] 
+  * `RunModel_CemaNeige()`: two-parameter degree-day snow melt and accumulation daily module [@valery_as_2014] 
   * `RunModel_CemaNeigeGR4J()`: combined use of **GR4J** and **CemaNeige** 
   * `RunModel_CemaNeigeGR5J()`: combined use of **GR5J** and **CemaNeige** 
   * `RunModel_CemaNeigeGR6J()`: combined use of **GR6J** and **CemaNeige** 
@@ -375,7 +376,8 @@ load("../data/airGR_users_map.RData")
 setView(airGR_map, lng = 46.0, lat = 20.0, zoom = 2)
 ```
 
-<!--
+
 # References
--->
+
+
 
