@@ -67,7 +67,7 @@ These models can be called within **airGR** using the following functions:
   * `RunModel_GR4H()`: four-parameter hourly lumped hydrological model [@mathevet_quels_2005] 
   * `RunModel_GR4J()`: four-parameter daily lumped hydrological model [@perrin_improvement_2003] 
   * `RunModel_GR5J()`: five-parameter daily lumped hydrological model [@le_moine_bassin_2008] 
-  * `RunModel_GR6J()`: six-parameter daily lumped hydrological model @pushpalatha_downward_2011] 
+  * `RunModel_GR6J()`: six-parameter daily lumped hydrological model [@pushpalatha_downward_2011] 
   * `RunModel_GR2M()`: two-parameter monthly lumped hydrological model [@mouelhi_vers_2003; @mouelhi_stepwise_2006] 
   * `RunModel_GR1A()`: one-parameter yearly lumped hydrological model [@mouelhi_vers_2003; @mouelhi_linking_2006] 
   * `RunModel_CemaNeige()`: two-parameter degree-day snow melt and accumulation daily module [@valery_as_2014] 
@@ -378,6 +378,11 @@ setView(airGR_map, lng = 46.0, lat = 20.0, zoom = 2)
 
 
 # References
+
+```{r, echo=FALSE}
+out_file <- "airGR_vignette.html"
+invisible(file.copy(out_file, paste("../../airGR_github-io/odelaigue.github.io", out_file, sep = "/"), overwrite = TRUE))
+```
 
 
 
