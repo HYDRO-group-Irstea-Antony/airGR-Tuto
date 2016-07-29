@@ -373,7 +373,7 @@ toBibtex(citation("airGR"))
 library(leaflet)
 #library(htmlwidgets)
 load("../data/airGR_users_map.RData")
-setView(airGR_map, lng = 46.0, lat = 20.0, zoom = 2)
+setView(airGR_map, lng = 30.0, lat = 20.0, zoom = 1)
 ```
 
 
